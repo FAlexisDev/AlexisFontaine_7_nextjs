@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./style.module.scss";
-import logo from "../../assets/logo_blanc.png";
+
 const Footer = () => {
     return (
         <div className={style.footer}>

@@ -10,4 +10,22 @@
     & hr {
         border: 2px solid #fd2d01;
     }
+
+    .white__logo__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background: #fd2d01;
+        width: 100%;
+        & img {
+            width: 225px;
+            margin: 25px 10px;
+        }
+        &__icon {
+            margin: 10px;
+            font-size: 22px;
+            color: white;
+        }
+    }
 }

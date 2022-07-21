@@ -9,7 +9,7 @@ const Signin = () => {
             <Header />
             <form
                 action="POST"
-                style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", height: "60vh", justifyContent: "center" }}
+                style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", height: "65vh", justifyContent: "center" }}
             >
                 <Input name="Prénom" id="name" type="text" icon={faUser} />
                 <Input name="Nom" id="lastName" type="text" icon={faUser} />

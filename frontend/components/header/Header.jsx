@@ -1,13 +1,27 @@
 import React from "react";
-import logo from "../../assets/logo_couleur.png";
+import colorLogo from "../../public/assets/logo_couleur.png";
+import whiteLogo from "../../public/assets/logo_blanc.png";
 import style from "./style.module.scss";
-const Header = () => {
+import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+const Header = (props) => {
+    const router = useRouter();
+
     return (
         <div className={style.container}>
-            <div className={style.container__logo}>
-                <img src={logo.src} alt="logo_groupomania" />
-            </div>
-            <hr />
+            {router.route != "/socialMedia" ? (
+                <div>
+                    <div className={style.container__logo}>
+                        <img src={colorLogo.src} alt="logo_groupomania" />
+                    </div>
+                    <hr />
+                </div>
+            ) : (
+                <div className={style.white__logo__container}>
+                    <img src={whiteLogo.src} alt="logo_groupomania" />
+                    <FontAwesomeIcon icon={props.icon} className={style.white__logo__container__icon} />
+                </div>
+            )}
         </div>
     );
 };
