@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Header = (props) => {
     const router = useRouter();
+    const displayMenu = () => {};
 
     return (
         <div className={style.container}>

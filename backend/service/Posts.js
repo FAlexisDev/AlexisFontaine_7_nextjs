@@ -1,20 +1,18 @@
 const Posts = require("../models/Posts");
 
 exports.getPosts = async () => {
-    await Posts.find();
+    return await Posts.find();
 };
 
 exports.createPost = async (req) => {
     const post = new Posts({
-        ...req.body.post,
-        like: 0,
-        usersLiked: [],
+        ...req.body,
     });
     await post.save();
 };
 
 exports.getPost = async (req) => {
-    await Posts.findOne({ _id: req.params.id });
+    return await Posts.findOne({ _id: req.params.id });
 };
 
 exports.modifyPost = async (req) => {

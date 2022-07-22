@@ -19,16 +19,33 @@
 .content__container__icons {
   display: flex;
   justify-content: space-between;
-  padding: 0px 0px 10px 0px;
+  padding: 5px 0px 10px 0px;
 }
 .content__container__icons__image {
   color: #4e5166;
   font-size: 25px;
+  position: absolute;
+}
+.content__container__icons__fileUploader {
+  display: none;
+}
+.content__container__icons label {
+  cursor: pointer;
+}
+.content__container__icons__label {
+  position: relative;
+}
+.content__container__icons__submitButton {
+  width: 45px;
+  background-color: #4e5166;
+  border: none;
+  height: 25px;
+  border-radius: 5px;
 }
 .content__container__icons__paperPlane {
-  background-color: #4e5166;
-  padding: 5px 15px;
-  border-radius: 20px;
+  position: absolute;
+  left: 13px;
+  top: 4px;
   color: white;
 }
 
@@ -49,7 +66,7 @@
   color: rgba(0, 0, 0, 0.49);
   position: absolute;
   right: 5px;
-  bottom: 40px;
+  bottom: 48px;
 }
 
 /*# sourceMappingURL=style.module.css.map */
