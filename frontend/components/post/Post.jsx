@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./style.module.scss";
 
-const Post = (props) => {
+export const Post = (props) => {
     return (
         <div className={style.post__container}>
             <div className={style.post__container__header}>
@@ -28,5 +28,3 @@ const Post = (props) => {
         </div>
     );
 };
-
-export default Post;

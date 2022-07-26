@@ -1,5 +1,7 @@
 import React from "react";
-import { Footer, Header, Input } from "../../components";
+import { Footer } from "../../components/footer";
+import { Header } from "../../components/header";
+import { InputGroup } from "../../components/input";
 import Link from "next/link";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 import style from "../../styles/Home.module.css";
@@ -45,12 +47,12 @@ const Signin = () => {
                 id="signupForm"
             >
                 <h1 className={style.title__signin}> Inscrivez-vous! </h1>
-                <Input name="name" id="name" type="text" icon={faUser} label="Prénom" />
-                <Input name="lastName" id="lastName" type="text" icon={faUser} label="Nom" />
-                <Input name="email" id="email" type="email" icon={faEnvelope} label="Adresse e-mail" />
-                <Input name="password" id="password" type="password" icon={faKey} label="Mot de passe" />
+                <InputGroup name="name" id="name" type="text" icon={faUser} label="Prénom" />
+                <InputGroup name="lastName" id="lastName" type="text" icon={faUser} label="Nom" />
+                <InputGroup name="email" id="email" type="email" icon={faEnvelope} label="Adresse e-mail" />
+                <InputGroup name="password" id="password" type="password" icon={faKey} label="Mot de passe" />
                 <span className={style.errorHandler} id="errorHandler"></span>
-                <Input id="submit" type="submit" value="S'inscrire" className="submitButton" onClick={handleSubmit} />
+                <InputGroup id="submit" type="submit" value="S'inscrire" className="submitButton" onClick={handleSubmit} />
                 <p>
                     Déja inscrit ?
                     <Link href="/">

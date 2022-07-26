@@ -2,7 +2,7 @@ import React from "react";
 import style from "./style.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const PostCreation = (props) => {
+export const PostCreation = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -16,6 +16,7 @@ const PostCreation = (props) => {
             usersLiked: [],
             imageUrl: formData.get("file").name,
         };
+
         const createPost = async () => {
             await fetch("http://localhost:4200/api/posts", {
                 headers: {
@@ -48,5 +49,3 @@ const PostCreation = (props) => {
         </div>
     );
 };
-
-export default PostCreation;

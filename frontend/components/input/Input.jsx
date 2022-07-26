@@ -2,7 +2,7 @@ import React from "react";
 import style from "./style.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const InputGroup = (props) => {
+export const InputGroup = (props) => {
     return (
         <div className={style.input__container}>
             {props.type === "submit" ? (
@@ -24,5 +24,3 @@ const InputGroup = (props) => {
         </div>
     );
 };
-
-export default InputGroup;

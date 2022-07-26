@@ -4,9 +4,9 @@ import whiteLogo from "../../public/assets/logo_blanc.png";
 import style from "./style.module.scss";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const Header = (props) => {
+
+export const Header = (props) => {
     const router = useRouter();
-    const displayMenu = () => {};
 
     return (
         <div className={style.container}>
@@ -26,5 +26,3 @@ const Header = (props) => {
         </div>
     );
 };
-
-export default Header;

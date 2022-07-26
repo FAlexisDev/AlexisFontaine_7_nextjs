@@ -1,5 +1,8 @@
 import React from "react";
-import { Footer, Header, PostCreation, Post } from "../components";
+import { Footer } from "../components/footer";
+import { Header } from "../components/header";
+import { PostCreation } from "../components/postCreation";
+import { Post } from "../components/post";
 import { faBars, faImage, faPaperPlane, faCircleUser, faEllipsis, faComments, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const SocialMedia = ({ posts }) => {
