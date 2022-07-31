@@ -21,6 +21,7 @@ exports.login = async (req, res) => {
 
     if (bcryptResult) {
         const token = jwt.sign({ userId: user._id, role: user.roleId }, "3v3rNsUcu3xZ5he86nE6UJn2796r2HFfTZWVUCx88Re3s6Jm", { expiresIn: "24h" });
+        res.cookie("access_token", token, { domain: "localhost" });
         return { userId: user._id, token: token };
     } else {
         throw new Error("Mot de passe incrorect");

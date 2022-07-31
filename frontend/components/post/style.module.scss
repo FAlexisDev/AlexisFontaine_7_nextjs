@@ -3,10 +3,22 @@
     background-color: white;
     margin-bottom: 15px;
     font-family: "Roboto", sans-serif;
+
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
+        &__postManagement {
+            position: absolute;
+            top: 50px;
+            right: 5px;
+
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            background-color: white;
+            transform-origin: top;
+            animation: manageApparition 0.05s ease-in-out;
+        }
         &__profile {
             font-weight: 500;
             display: flex;
@@ -20,6 +32,11 @@
             color: #4e5166;
             font-size: 25px;
             margin: 4px;
+            padding: 5px;
+            &:hover {
+                border-radius: 20px;
+                background-color: rgba(100, 100, 111, 0.2);
+            }
         }
     }
     &__post {
@@ -36,6 +53,7 @@
         color: #4e5166;
         font-size: 20px;
         margin: 4px;
+
         & div {
             display: flex;
             justify-content: center;
@@ -47,5 +65,14 @@
             font-weight: 400;
             padding-left: 4px;
         }
+    }
+}
+
+@keyframes manageApparition {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

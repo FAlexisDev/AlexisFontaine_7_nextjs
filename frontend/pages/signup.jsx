@@ -1,12 +1,14 @@
 import React from "react";
-import { Footer } from "../../components/footer";
-import { Header } from "../../components/header";
-import { InputGroup } from "../../components/input";
+import { Footer } from "../components/footer";
+import { Header } from "../components/header";
+import { InputGroup } from "../components/input";
 import Link from "next/link";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
-import style from "../../styles/Home.module.css";
+import style from "../styles/Home.module.css";
 
-const Signin = () => {
+const Signup = () => {
+    const router = useRouter();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const errorHandler = document.querySelector("#errorHandler");
@@ -55,7 +57,7 @@ const Signin = () => {
                 <InputGroup id="submit" type="submit" value="S'inscrire" className="submitButton" onClick={handleSubmit} />
                 <p>
                     Déja inscrit ?
-                    <Link href="/">
+                    <Link href="/login">
                         <a className={style.link}> Connecte-toi !</a>
                     </Link>
                 </p>
@@ -66,4 +68,4 @@ const Signin = () => {
     );
 };
 
-export default Signin;
+export default Signup;

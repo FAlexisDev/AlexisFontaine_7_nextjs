@@ -5,13 +5,12 @@ import { InputGroup } from "../components/input";
 import Link from "next/link";
 import style from "../styles/Home.module.css";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+import { setCookie, getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 export default function Login() {
-    // Voir différences entre : "link" -- "useRouter()"
-    // const router = useRouter();
-    // const handleClick = () => {
-    //     router.push("/account/signin");
-    // };
+    const router = useRouter();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const errorHandler = document.querySelector("#errorHandler");
@@ -28,14 +27,18 @@ export default function Login() {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             },
+            credentials: "include",
             method: "POST",
             body: JSON.stringify(data),
         })
             .then(async (res) => {
                 const data = await res.json();
                 sessionStorage.setItem("userId", JSON.stringify(data.userId));
+                console.log(data);
                 if (res.status === 400) errorHandler.innerText = "❌ Adresse e-mail ou mot de passe incorrect";
-                else window.location.href = "/socialMedia";
+                else {
+                    router.push("/socialMedia");
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -57,7 +60,7 @@ export default function Login() {
                 <InputGroup id="submit" type="submit" value="Connexion" onClick={handleSubmit} />
                 <p>
                     Pas de compte ?
-                    <Link href="/account/signin">
+                    <Link href="/signup">
                         <a className={style.link}> Inscrit toi !</a>
                     </Link>
                 </p>

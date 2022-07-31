@@ -1,4 +1,5 @@
 const roleModel = require("../models/Roles");
+const userModel = require("../models/Users");
 const mongoose = require("mongoose");
 
 exports.addRoles = async () => {
@@ -16,3 +17,7 @@ exports.addRoles = async () => {
     await adminRole.save();
     await userRole.save();
 };
+
+// exports.userInfosHandler = async () => {
+//     userModel.fincOne({_id= req.body.});
+// };

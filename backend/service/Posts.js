@@ -5,10 +5,17 @@ exports.getPosts = async () => {
 };
 
 exports.createPost = async (req) => {
+    const { description, userId } = req.body;
+
     const post = new Posts({
-        ...req.body,
+        description: description,
+        userId: userId,
+        usersLiked: [],
+        imageUrl: `${req.protocol}://${req.get("host")}/${req.file.path}`,
     });
-    await post.save();
+    console.log(post);
+
+    return await post.save();
 };
 
 exports.getPost = async (req) => {
