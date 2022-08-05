@@ -16,10 +16,12 @@ export const PostCreation = (props) => {
         const array = [];
         const data = new FormData();
 
+        if (formData.get("file").size !== 0) {
+            data.append("file", formData.get("file"));
+        }
         data.append("userId", userId);
         data.append("description", formData.get("post"));
         data.append("usersLiked", array);
-        data.append("file", formData.get("file"));
 
         fetch("http://localhost:4200/api/posts", {
             headers: {

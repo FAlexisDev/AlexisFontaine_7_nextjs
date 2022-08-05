@@ -3,6 +3,7 @@
     background-color: white;
     margin-bottom: 15px;
     font-family: "Roboto", sans-serif;
+    position: relative;
 
     &__header {
         display: flex;
@@ -44,7 +45,6 @@
     }
     &__image {
         width: 100%;
-        height: 100%;
         object-fit: cover;
     }
     &__icons {
@@ -52,18 +52,23 @@
         justify-content: space-between;
         color: #4e5166;
         font-size: 20px;
-        margin: 4px;
 
         & div {
             display: flex;
+            width: 100%;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 0 10px;
+
+            &:hover {
+                background-color: #4e51663c;
+                cursor: pointer;
+            }
         }
-        & span {
+        & p {
+            padding-left: 4px;
             font-size: 14px;
             font-weight: 400;
-            padding-left: 4px;
         }
     }
 }

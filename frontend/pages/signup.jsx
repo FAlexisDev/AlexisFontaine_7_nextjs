@@ -7,8 +7,6 @@ import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 import style from "../styles/Home.module.css";
 
 const Signup = () => {
-    const router = useRouter();
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const errorHandler = document.querySelector("#errorHandler");
@@ -21,7 +19,6 @@ const Signup = () => {
             name: formData.get("name"),
             lastName: formData.get("lastName"),
         };
-        console.log(data);
 
         fetch("http://localhost:4200/api/auth/signup", {
             headers: {

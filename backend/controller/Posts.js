@@ -2,7 +2,6 @@ const postsServices = require("../service/Posts");
 
 exports.getPosts = async (req, res) => {
     try {
-        console.log(req.cookies.access_token.split(".")[0]);
         const posts = await postsServices.getPosts();
         res.status(200).json(posts);
     } catch (error) {
@@ -43,5 +42,14 @@ exports.deletePost = async (req, res) => {
         res.status(200).json({ message: "Post supprimé! " });
     } catch (error) {
         res.status(400).json({ message: "Post non supprimé", error });
+    }
+};
+
+exports.likePost = async (req, res) => {
+    try {
+        await postsServices.likePost(req);
+        res.status(200).json({ message: "Like mis à jour! " });
+    } catch (error) {
+        res.status(400).json({ message: "Like non mis à jour", error });
     }
 };
