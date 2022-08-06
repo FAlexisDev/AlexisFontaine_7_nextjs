@@ -5,6 +5,7 @@ const postSchema = mongoose.Schema({
     description: { type: String, required: true },
     usersLiked: { type: Array, required: true },
     imageUrl: { type: String, required: false },
+    createdAt: { type: Date, required: false },
 });
 
 module.exports = mongoose.model("Posts", postSchema);

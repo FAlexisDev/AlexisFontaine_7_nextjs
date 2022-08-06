@@ -15,9 +15,20 @@ const SocialMedia = () => {
     const router = useRouter();
     const [data, setData] = useState([]);
     const [isLoading, setLoading] = useState(false);
+    const [userInfo, setUserInfos] = useState({});
     const [updateRequired, setUpdateRequired] = useState(false);
     const [value, setValue] = useState(false);
 
+    const updateData = (postId, updatedData) => {
+        setData((data) => {
+            return data.map((element) => {
+                if (element.id === postId) {
+                    return { ...element, ...updatedData };
+                }
+                return element;
+            });
+        });
+    };
     useEffect(() => {
         if (value) {
             window.scrollTo({ top: 0 });
@@ -30,15 +41,22 @@ const SocialMedia = () => {
         }
     });
     useEffect(() => {
+        fetch("http://localhost:4200/api/auth/getUsersInfos", { credentials: "include" })
+            .then((res) => res.json())
+            .then((userData) => setUserInfos(userData))
+            .catch((error) => console.log(error));
+    }, []);
+    useEffect(() => {
         setUpdateRequired(false);
         setLoading(true);
+
         fetch("http://localhost:4200/api/posts", { credentials: "include" })
-            .then(async (res) => res.json())
+            .then((res) => res.json())
             .then((data) => {
                 setData(data);
                 setTimeout(() => {
                     setLoading(false);
-                }, 500);
+                }, 200);
             })
             .catch((error) => console.log(error));
     }, [updateRequired]);
@@ -47,14 +65,12 @@ const SocialMedia = () => {
         setUpdateRequired(true);
     };
 
-    console.log(value);
-
     return (
         <div style={{ position: "relative", minHeight: "100vh", height: "100%", backgroundColor: "rgba(255,215,215,0.2)" }}>
             <ModifyContext.Provider value={{ value, setValue }}>
                 {value.state ? <ModifyPost icon={{ faImage, faPaperPlane, faXmark }} updatePosts={updatePostsList} /> : ""}
                 <Header icon={{ faBars, faXmark }} />
-                <PostCreation icon={{ faImage, faPaperPlane }} updatePosts={updatePostsList} />
+                <PostCreation icon={{ faImage, faPaperPlane }} updatePosts={updatePostsList} userInfos={userInfo} />
                 {data.length === 0 && !isLoading ? <p style={{ textAlign: "center" }}>Aucun post à afficher</p> : ""}
 
                 {isLoading ? (
@@ -65,10 +81,15 @@ const SocialMedia = () => {
                             icon={{ faCircleUser, faEllipsis, faComments, faHeart }}
                             description={post.description}
                             image={post.imageUrl}
-                            key={post._id}
-                            id={post._id}
+                            key={post.id}
+                            id={post.id}
                             updatePosts={updatePostsList}
-                            usersLiked={post.usersLiked}
+                            isLiked={post.isLiked}
+                            like={post.like}
+                            name={post.name}
+                            lastName={post.lastName}
+                            updateData={updateData}
+                            createdAt={post.createdAt}
                         />
                     ))
                 )}

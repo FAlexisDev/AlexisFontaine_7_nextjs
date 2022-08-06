@@ -27,3 +27,7 @@ exports.login = async (req, res) => {
         throw new Error("Mot de passe incrorect");
     }
 };
+
+exports.getUsersInfos = async (userId) => {
+    return await Users.findOne({ _id: userId });
+};

@@ -20,7 +20,7 @@ export const ModifyPost = (props) => {
         const userId = JSON.parse(sessionStorage.getItem("userId"));
         const array = [];
         const errorHandler = document.querySelector("#errorHandler");
-        data.append("usersLiked", array);
+
         data.append("userId", userId);
         data.append("file", file);
         data.append("description", textArea);

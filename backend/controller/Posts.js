@@ -2,9 +2,11 @@ const postsServices = require("../service/Posts");
 
 exports.getPosts = async (req, res) => {
     try {
-        const posts = await postsServices.getPosts();
+        const requesterUserId = req.authenticatedUserId;
+        const posts = await postsServices.getPosts(requesterUserId);
         res.status(200).json(posts);
     } catch (error) {
+        console.error(error);
         res.status(404).json({ error });
     }
 };
@@ -47,9 +49,11 @@ exports.deletePost = async (req, res) => {
 
 exports.likePost = async (req, res) => {
     try {
-        await postsServices.likePost(req);
-        res.status(200).json({ message: "Like mis à jour! " });
+        const response = await postsServices.likePost(req);
+
+        res.status(200).json({ message: "Like mis à jour! ", data: { likeCount: response.usersLiked.length } });
     } catch (error) {
-        res.status(400).json({ message: "Like non mis à jour", error });
+        console.error(error);
+        res.status(400).json({ message: "Like non mis à jour", error: error });
     }
 };

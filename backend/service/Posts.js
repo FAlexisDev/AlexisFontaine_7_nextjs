@@ -1,7 +1,24 @@
 const Posts = require("../models/Posts");
+const { getUsersInfos } = require("./Users");
 
-exports.getPosts = async () => {
-    return await Posts.find();
+exports.getPosts = async (requesterUserId) => {
+    const posts = await Posts.find();
+
+    const newPosts = posts.map(async (post) => {
+        const userInfos = await getUsersInfos(post.userId);
+        return {
+            id: post._id,
+            userId: post.userId,
+            imageUrl: post.imageUrl,
+            description: post.description,
+            like: post.usersLiked.length,
+            isLiked: post.usersLiked.includes(requesterUserId),
+            name: userInfos.name,
+            lastName: userInfos.lastName,
+            createdAt: post.createdAt,
+        };
+    });
+    return await Promise.all(newPosts);
 };
 
 exports.createPost = async (req) => {
@@ -13,8 +30,8 @@ exports.createPost = async (req) => {
         userId: userId,
         usersLiked: [],
         imageUrl: imageUrl,
+        createdAt: Date.now(),
     });
-    console.log(post);
 
     return await post.save();
 };
@@ -39,25 +56,26 @@ exports.deletePost = async (req) => {
 
 exports.likePost = async (req) => {
     const post = await Posts.findOne({ _id: req.params.id });
+    let usersLiked = post.usersLiked;
+    let likeStatus = false;
 
-    switch (req.body.like) {
-        case true:
-            if (post.usersLiked.includes(req.body.userId)) {
-                post.usersLiked.splice(0, 1);
-            }
-            post.usersLiked.push(req.body.userId);
-
-            break;
-
-        case false:
-            post.usersLiked = post.usersLiked.filter((user) => {
-                return user != req.body.userId;
-            });
-            break;
+    if (usersLiked.includes(req.authenticatedUserId)) {
+        likeStatus = true;
     }
-    console.log(post.usersLiked);
-    return await post.updateOne({
+
+    if (!likeStatus) {
+        usersLiked.push(req.authenticatedUserId);
+    } else {
+        console.log("test");
+        usersLiked = usersLiked.filter((user) => {
+            return user != req.authenticatedUserId;
+        });
+    }
+    console.log(usersLiked);
+
+    await post.updateOne({
         _id: req.params.id,
-        usersLiked: post.usersLiked,
+        usersLiked: usersLiked,
     });
+    return await Posts.findOne({ _id: req.params.id });
 };

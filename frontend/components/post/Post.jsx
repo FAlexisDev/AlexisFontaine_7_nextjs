@@ -1,38 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PostManagement } from "../postManagement";
 import style from "./style.module.scss";
+import dateFormat from "dateFormat";
 import { useState } from "react";
 import { ModifyPost } from "../modifyPost";
 import { ModifyContext } from "../../utils/modifyContext";
 import { faBars, faImage, faPaperPlane, faCircleUser, faEllipsis, faComments, faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export const Post = (props) => {
-    console.log(props);
     const [click, setClick] = useState(false);
-    const [isLiked, setLike] = useState(false);
-    const { value, setValue } = useContext(ModifyContext);
-    const userId = JSON.parse(sessionStorage.getItem("userId"));
 
     const handleClick = () => {
         alert("Feature en cours de développement");
     };
-    const data = { like: isLiked, userId: userId };
 
     const handleLike = () => {
-        fetch(`http://localhost:4200/api/posts/${props.id}/like`, {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            credentials: "include",
-            method: "POST",
-            body: JSON.stringify(data),
-        })
+        fetch(`http://localhost:4200/api/posts/${props.id}/like`, { credentials: "include" })
             .then((res) => {
-                setLike(!isLiked);
-                console.error(res);
+                return res.json();
+            })
+            .then((likeData) => {
+                props.updateData(props.id, { like: likeData.data.likeCount, isLiked: !props.isLiked });
             })
             .catch((error) => console.log(error));
     };
@@ -42,7 +32,8 @@ export const Post = (props) => {
             <div className={style.post__container__header} id="post__container__header">
                 <div className={style.post__container__header__profile}>
                     <FontAwesomeIcon icon={props.icon.faCircleUser} className={style.post__container__header__profile__userIcon} />
-                    <p>Alexis Fontaine</p>
+                    <p className={style.post__container__header__profile__name}>{props.name + " " + props.lastName}</p>
+                    <p className={style.date}>{dateFormat(new Date(props.createdAt), "ddd mmmm yy - HH:MM")}</p>
                 </div>
                 <FontAwesomeIcon icon={props.icon.faEllipsis} className={style.post__container__header__dotsIcon} onClick={() => setClick(!click)} />
                 {click ? (
@@ -62,7 +53,8 @@ export const Post = (props) => {
                     <p>Commentaires</p>
                 </div>
                 <div onClick={handleLike}>
-                    <FontAwesomeIcon icon={props.icon.faHeart} className={style.post__container__icons__likes} />
+                    <FontAwesomeIcon icon={props.icon.faHeart} className={props.isLiked ? style.post__container__icons__likes : ""} id="likeIcon" />
+                    <p>{props.like}</p>
                     <p>J'aime</p>
                 </div>
             </div>

@@ -18,3 +18,15 @@ exports.login = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+
+exports.getUsersInfos = async (req, res) => {
+    try {
+        const userId = req.authenticatedUserId;
+        const response = await usersService.getUsersInfos(userId);
+
+        res.status(200).json({ name: response.name, lastName: response.lastName });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: error.message });
+    }
+};

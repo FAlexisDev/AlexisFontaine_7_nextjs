@@ -23,10 +23,15 @@
         &__profile {
             font-weight: 500;
             display: flex;
+            margin: 6px;
             &__userIcon {
                 color: #4e5166;
                 font-size: 40px;
-                margin: 4px;
+            }
+            &__name {
+                position: absolute;
+                left: 55px;
+                top: -6px;
             }
         }
         &__dotsIcon {
@@ -41,7 +46,7 @@
         }
     }
     &__post {
-        margin: 4px;
+        margin: 10px 6px;
     }
     &__image {
         width: 100%;
@@ -52,7 +57,9 @@
         justify-content: space-between;
         color: #4e5166;
         font-size: 20px;
-
+        &__likes {
+            color: #fd2d01;
+        }
         & div {
             display: flex;
             width: 100%;
@@ -73,6 +80,15 @@
     }
 }
 
+.date {
+    position: absolute;
+    left: 55px;
+    top: 18px;
+
+    font-size: 12px;
+    font-weight: 300;
+    color: #4e5166;
+}
 @keyframes manageApparition {
     from {
         opacity: 0;
