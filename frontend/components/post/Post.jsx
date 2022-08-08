@@ -45,11 +45,11 @@ export const Post = (props) => {
             {props.image === "" ? "" : <img src={props.image} alt="" className={style.post__container__image} />}
 
             <div className={style.post__container__icons}>
-                <div onClick={handleClick}>
+                <div onClick={handleClick} className={style.commentDiv}>
                     <FontAwesomeIcon icon={props.icon.faComments} className={style.post__container__icons__comments} />
                     <p>Commentaires</p>
                 </div>
-                <div onClick={handleLike}>
+                <div onClick={handleLike} className={style.likeDiv}>
                     <FontAwesomeIcon icon={props.icon.faHeart} className={props.isLiked ? style.post__container__icons__likes : ""} id="likeIcon" />
                     <p>{props.like}</p>
                     <p>J'aime</p>

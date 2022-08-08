@@ -5,6 +5,13 @@
     min-height: 100vh;
     height: 100%;
     font-family: $roboto-font;
+    @media screen and (min-width: 992px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        margin: auto;
+    }
 
     &__form {
         display: flex;
@@ -18,10 +25,15 @@
             margin: 0;
             padding-bottom: 50px;
             color: $primary-color;
+            @media screen and (min-width: 992px) and (min-height: 1000px) {
+                font-size: 45px;
+            }
         }
         &__link {
             color: $primary-color;
             font-weight: 600;
+            @media screen and (min-width: 992px) and (min-height: 1000px) {
+            }
         }
         &__errorHandler {
             bottom: 200px;
@@ -30,6 +42,23 @@
             text-align: center;
             color: red;
             font-size: 12px;
+            @media screen and (min-width: 992px) and (min-height: 1000px) {
+                font-size: 16px;
+            }
         }
+    }
+}
+
+.backgroundcolor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 992px) and (min-height: 1000px) {
+        background-color: #ffd7d771;
+        width: 35rem;
+        height: 35rem;
+        margin: auto;
+        border-radius: 50px;
     }
 }

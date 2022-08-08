@@ -27,10 +27,12 @@ export const NavButton = (props) => {
                 <FontAwesomeIcon icon={props.icon.faEnvelope} />
                 <p>Nous contacter</p>
             </div>
+
             <div className={style.navMenu__container} onClick={handleClickLogout}>
                 <FontAwesomeIcon icon={props.icon.faArrowRightFromBracket} />
                 <p>Se déconnecter</p>
             </div>
+            <hr className={style.navMenu__hr} />
         </div>
     );
 };

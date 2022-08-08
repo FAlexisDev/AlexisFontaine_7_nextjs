@@ -63,7 +63,7 @@ export const PostCreation = (props) => {
                     </label>
                     <label htmlFor="submit" className={style.content__container__icons__label}>
                         <FontAwesomeIcon icon={props.icon.faPaperPlane} className={style.content__container__icons__paperPlane} />
-                        <input type="submit" id="submit" className={style.content__container__icons__submitButton} onClick={handleSubmit} value="" />
+                        <input type="submit" id="submit" className={style.content__container__icons__submitButton} onClick={handleSubmit} value="Publier" />
                     </label>
                 </div>
             </form>

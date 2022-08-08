@@ -5,17 +5,31 @@
     background-color: white;
     font-family: $roboto-font;
     margin-bottom: 15px;
+    @media screen and (min-width: 992px) {
+        right: 390px;
+        width: 60%;
+        margin: auto;
+        margin-top: 140px;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        z-index: 1;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    }
     & p {
         margin: 0;
         padding: 20px 0 10px 10px;
         font-weight: 500;
         font-size: 18px;
+        @media screen and (min-width: 992px) {
+            padding-left: 25px;
+        }
     }
     &__form {
         position: relative;
         width: 95%;
         margin: auto;
     }
+
     &__icons {
         display: flex;
         justify-content: space-between;
@@ -24,6 +38,9 @@
             color: $tertiary-color;
             font-size: 25px;
             position: absolute;
+            @media screen and (min-width: 992px) {
+                font-size: 30px;
+            }
         }
         &__fileUploader {
             display: none;
@@ -42,12 +59,27 @@
             border: none;
             height: 25px;
             border-radius: 20px;
+            font-size: 0;
+            @media screen and (min-width: 992px) {
+                text-align: start;
+                padding-left: 20px;
+                height: 30px;
+                font-size: 18px;
+                width: 125px;
+                color: white;
+                background-color: $tertiary-color;
+            }
         }
         &__paperPlane {
             position: absolute;
             left: 13px;
             top: 4px;
             color: white;
+            @media screen and (min-width: 992px) {
+                left: inherit;
+                right: 13px;
+                font-size: 18px;
+            }
         }
     }
 }

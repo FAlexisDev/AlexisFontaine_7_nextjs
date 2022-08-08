@@ -5,7 +5,13 @@
     min-height: 100vh;
     height: 100%;
     font-family: $roboto-font;
-
+    @media screen and (min-width: 992px) {
+        width: 60%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     &__form {
         display: flex;
         flex-direction: column;
@@ -18,6 +24,9 @@
             margin: 0;
             padding-bottom: 50px;
             color: $primary-color;
+            @media screen and (min-width: 992px) {
+                font-size: 45px;
+            }
         }
         &__link {
             color: $primary-color;
@@ -30,6 +39,23 @@
             text-align: center;
             color: red;
             font-size: 12px;
+            @media screen and (min-width: 992px) {
+                font-size: 16px;
+            }
         }
+    }
+}
+
+.backgroundcolor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 992px) and (min-height: 1000px) {
+        background-color: #ffd7d771;
+        width: 35rem;
+        height: 45rem;
+        margin: auto;
+        border-radius: 50px;
     }
 }

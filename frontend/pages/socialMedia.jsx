@@ -36,16 +36,18 @@ export const SocialMedia = () => {
         });
     };
     useEffect(() => {
-        if (value) {
-            window.scrollTo({ top: 0 });
-        }
-    });
-    useEffect(() => {
         const cookie = getCookie("access_token");
         if (cookie === undefined) {
             router.push("/login");
         }
     });
+
+    useEffect(() => {
+        if (value) {
+            window.scrollTo({ top: 0 });
+        }
+    });
+
     useEffect(() => {
         fetch("http://localhost:4200/api/auth/getUsersInfos", { credentials: "include" })
             .then((res) => res.json())

@@ -6,6 +6,16 @@
     font-family: $roboto-font;
     position: relative;
 
+    @media screen and (min-width: 992px) {
+        width: 60%;
+        z-index: 1;
+        margin: auto;
+
+        margin-bottom: 20px;
+        border-radius: 20px;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    }
+
     &__header {
         display: flex;
         justify-content: space-between;
@@ -15,7 +25,6 @@
             position: absolute;
             top: 50px;
             right: 5px;
-
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
             background-color: white;
             transform-origin: top;
@@ -25,14 +34,26 @@
             font-weight: 500;
             display: flex;
             margin: 6px;
+            @media screen and (min-width: 992px) {
+                padding: 10px;
+            }
+
             &__userIcon {
                 color: $tertiary-color;
                 font-size: 40px;
+                @media screen and (min-width: 992px) {
+                    font-size: 46px;
+                }
             }
             &__name {
                 position: absolute;
                 left: 55px;
                 top: -6px;
+                @media screen and (min-width: 992px) {
+                    left: 68px;
+                    font-size: 18px;
+                    top: 6px;
+                }
             }
         }
         &__dotsIcon {
@@ -40,6 +61,9 @@
             font-size: 25px;
             margin: 4px;
             padding: 5px;
+            @media screen and (min-width: 992px) {
+                padding: 10px;
+            }
             &:hover {
                 border-radius: 20px;
                 background-color: rgba(100, 100, 111, 0.2);
@@ -52,6 +76,9 @@
     &__image {
         width: 100%;
         object-fit: cover;
+        @media screen and (min-width: 992px) {
+            max-height: 550px;
+        }
     }
     &__icons {
         display: flex;
@@ -85,10 +112,29 @@
     position: absolute;
     left: 55px;
     top: 18px;
-
     font-size: 12px;
     font-weight: 300;
     color: $tertiary-color;
+    @media screen and (min-width: 992px) {
+        left: 68px;
+        top: 32px;
+    }
+}
+
+.likeDiv {
+    &:hover {
+        @media screen and (min-width: 992px) {
+            border-bottom-right-radius: 20px;
+        }
+    }
+}
+
+.commentDiv {
+    &:hover {
+        @media screen and (min-width: 992px) {
+            border-bottom-left-radius: 20px;
+        }
+    }
 }
 @keyframes manageApparition {
     from {
