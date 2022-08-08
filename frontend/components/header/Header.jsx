@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import colorLogo from "../../public/assets/logo_couleur.png";
 import whiteLogo from "../../public/assets/logo_blanc.png";
-import style from "./style.module.scss";
+import style from "./header.module.scss";
 import { NavButton } from "../navButton";
 import { useRouter } from "next/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = (props) => {

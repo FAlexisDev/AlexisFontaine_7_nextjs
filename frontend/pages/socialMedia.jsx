@@ -1,17 +1,23 @@
-import React, { useRef } from "react";
+// Librairies and modules
+import React from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { getCookie } from "cookies-next";
+
+// Components and icons
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
 import { PostCreation } from "../components/postCreation";
 import { Post } from "../components/post";
 import { ModifyContext } from "../utils/modifyContext";
 import { Loader } from "../components/loader";
-import { setCookie, getCookie } from "cookies-next";
 import { faBars, faImage, faPaperPlane, faCircleUser, faEllipsis, faComments, faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { ModifyPost } from "../components/modifyPost";
 
-const SocialMedia = () => {
+// Styles
+import style from "../styles/pages/SocialMedia.module.scss";
+
+export const SocialMedia = () => {
     const router = useRouter();
     const [data, setData] = useState([]);
     const [isLoading, setLoading] = useState(false);
@@ -66,7 +72,7 @@ const SocialMedia = () => {
     };
 
     return (
-        <div style={{ position: "relative", minHeight: "100vh", height: "100%", backgroundColor: "rgba(255,215,215,0.2)" }}>
+        <div className={style.socialMedia__container}>
             <ModifyContext.Provider value={{ value, setValue }}>
                 {value.state ? <ModifyPost icon={{ faImage, faPaperPlane, faXmark }} updatePosts={updatePostsList} /> : ""}
                 <Header icon={{ faBars, faXmark }} />

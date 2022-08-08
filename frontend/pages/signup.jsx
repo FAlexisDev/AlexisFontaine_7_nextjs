@@ -1,10 +1,15 @@
+// Librairies and modules
 import React from "react";
+import Link from "next/link";
+
+// Components and icons
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
 import { InputGroup } from "../components/input";
-import Link from "next/link";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
-import style from "../styles/Home.module.css";
+
+// Styles (sass)
+import style from "../styles/pages/Signup.module.scss";
 
 const Signup = () => {
     const handleSubmit = (e) => {
@@ -38,24 +43,20 @@ const Signup = () => {
             });
     };
     return (
-        <div style={{ position: "relative", minHeight: "100vh", height: "100%" }}>
+        <div className={style.signupContainer}>
             <Header />
-            <form
-                method="POST"
-                style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", height: "70vh", justifyContent: "center" }}
-                id="signupForm"
-            >
-                <h1 className={style.title__signin}> Inscrivez-vous! </h1>
+            <form method="POST" className={style.signupContainer__form} id="signupForm">
+                <h1 className={style.signupContainer__form__title}> Inscrivez-vous! </h1>
                 <InputGroup name="name" id="name" type="text" icon={faUser} label="Prénom" />
                 <InputGroup name="lastName" id="lastName" type="text" icon={faUser} label="Nom" />
                 <InputGroup name="email" id="email" type="email" icon={faEnvelope} label="Adresse e-mail" />
                 <InputGroup name="password" id="password" type="password" icon={faKey} label="Mot de passe" />
-                <span className={style.errorHandler} id="errorHandler"></span>
+                <span className={style.signupContainer__form__errorHandler} id="errorHandler"></span>
                 <InputGroup id="submit" type="submit" value="S'inscrire" className="submitButton" onClick={handleSubmit} />
                 <p>
                     Déja inscrit ?
                     <Link href="/login">
-                        <a className={style.link}> Connecte-toi !</a>
+                        <a className={style.signupContainer__form__link}> Connecte-toi !</a>
                     </Link>
                 </p>
             </form>

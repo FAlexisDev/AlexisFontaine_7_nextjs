@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./style.module.scss";
+import style from "./postCreation.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 
@@ -51,7 +51,7 @@ export const PostCreation = (props) => {
     };
     return (
         <div className={style.content__container}>
-            <p> Bonjour {props.userInfos.name} ! Que ce passe-t-il ? 👋</p>
+            <p> Bonjour {props.userInfos.name} ! Que se passe-t-il ? 👋</p>
             <form method="POST" className={style.content__container__form} id="postCreationForm">
                 <textarea name="post" id={style.post__content} cols="30" rows="6" placeholder="Ecrivez votre publication ici !" maxLength={200}></textarea>
                 <span id={style.post__content__lenght}> max.200</span>

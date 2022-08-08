@@ -1,0 +1,35 @@
+@import "../../styles/utils/varibales.scss";
+
+.loginContainer {
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+    font-family: $roboto-font;
+
+    &__form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 60vh;
+
+        &__title {
+            font-size: 30px;
+            margin: 0;
+            padding-bottom: 50px;
+            color: $primary-color;
+        }
+        &__link {
+            color: $primary-color;
+            font-weight: 600;
+        }
+        &__errorHandler {
+            bottom: 200px;
+            margin-bottom: 20px;
+            width: 80%;
+            text-align: center;
+            color: red;
+            font-size: 12px;
+        }
+    }
+}

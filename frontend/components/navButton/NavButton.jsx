@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./style.module.scss";
+import style from "./navButton.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { deleteCookie, getCookie } from "cookies-next";
+import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/router";
 
 export const NavButton = (props) => {

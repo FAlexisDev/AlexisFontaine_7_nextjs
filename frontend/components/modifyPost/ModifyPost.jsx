@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import style from "./style.module.scss";
+import React, { useContext, useState } from "react";
+import style from "./modifypost.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ModifyContext } from "../../utils/modifyContext";
 
@@ -18,13 +18,12 @@ export const ModifyPost = (props) => {
         e.preventDefault();
         const data = new FormData();
         const userId = JSON.parse(sessionStorage.getItem("userId"));
-        const array = [];
         const errorHandler = document.querySelector("#errorHandler");
 
         data.append("userId", userId);
         data.append("file", file);
         data.append("description", textArea);
-        data.get("description")
+        data.get("description") || data.get("file")
             ? fetch(`http://localhost:4200/api/posts/${value.modifiedPostId}`, {
                   headers: {
                       Accept: "application/json",
@@ -36,13 +35,14 @@ export const ModifyPost = (props) => {
                   .then((res) => {
                       props.updatePosts();
                       setValue({ modifiedPostId: "", state: !value });
+                      errorHandler.innerText = "✅ Post modifié ! ";
                       console.log(res);
                   })
                   .catch((error) => {
+                      errorHandler.innerText = " ⛔Post non modifié !";
                       console.log(error);
-                      errorHandler.innerText = "✅ Post modifié ! ";
                   })
-            : (errorHandler.innerText = "❌ Champs vides ou incorrectes ");
+            : (errorHandler.innerText = " ⛔ Champs vides ou incorrectes ");
     };
 
     console.log(value);

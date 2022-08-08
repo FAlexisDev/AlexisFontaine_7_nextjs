@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Users = require("../models/Users");
+require("dotenv").config();
 
 exports.signup = async ({ password, email, name, lastName }) => {
     // Ajouter le salt
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, process.env.SALT);
     const newUser = new Users({
         email: email,
         password: hashedPassword,
@@ -20,7 +21,7 @@ exports.login = async (req, res) => {
     const bcryptResult = await bcrypt.compare(req.body.password, user.password);
 
     if (bcryptResult) {
-        const token = jwt.sign({ userId: user._id, role: user.roleId }, "3v3rNsUcu3xZ5he86nE6UJn2796r2HFfTZWVUCx88Re3s6Jm", { expiresIn: "24h" });
+        const token = jwt.sign({ userId: user._id, role: user.roleId }, process.env.TOKEN, { expiresIn: "24h" });
         res.cookie("access_token", token, { domain: "localhost" });
         return { userId: user._id, token: token };
     } else {

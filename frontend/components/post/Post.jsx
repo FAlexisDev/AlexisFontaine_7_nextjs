@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React from "react";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PostManagement } from "../postManagement";
-import style from "./style.module.scss";
+import style from "./post.module.scss";
 import dateFormat from "dateFormat";
 import { useState } from "react";
-import { ModifyPost } from "../modifyPost";
-import { ModifyContext } from "../../utils/modifyContext";
-import { faBars, faImage, faPaperPlane, faCircleUser, faEllipsis, faComments, faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export const Post = (props) => {
     const [click, setClick] = useState(false);

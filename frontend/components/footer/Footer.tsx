@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./style.module.scss";
+import style from "./footer.module.scss";
 import { useRouter } from "next/router";
 
 export const Footer = () => {

@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import "../../styles/utils/varibales.scss";
 
 .container {
+    height: 100%;
     &__logo {
         display: flex;
         justify-content: center;
@@ -10,7 +11,7 @@
         }
     }
     & hr {
-        border: 2px solid #fd2d01;
+        border: 2px solid $primary-color;
     }
 
     .white__logo__container {
@@ -18,9 +19,14 @@
         align-items: center;
         justify-content: space-between;
         position: relative;
-        font-family: "Roboto", sans-serif;
-        background: #fd2d01;
+        font-family: $roboto-font;
+        background: $primary-color;
         width: 100%;
+        /* media !!  */
+        @media screen and (min-width: 992px) {
+            background-color: rgb(60, 9, 9);
+        }
+
         & img {
             width: 225px;
             margin: 25px 10px;
@@ -40,7 +46,7 @@
             display: flex;
             justify-content: center;
             position: absolute;
-            background-color: #fd2d01;
+            background-color: $primary-color;
             color: white;
             right: 0;
             bottom: -98px;
@@ -68,3 +74,5 @@
         opacity: 0;
     }
 }
+
+/* MEDIAQUERIES */

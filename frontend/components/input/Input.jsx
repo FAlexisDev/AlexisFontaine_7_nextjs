@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./style.module.scss";
+import style from "./input.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const InputGroup = (props) => {

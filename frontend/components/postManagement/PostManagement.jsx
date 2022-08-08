@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import style from "./style.module.scss";
-import { ModifyPost } from "../modifyPost";
+import style from "./postManagement.module.scss";
 import { ModifyContext } from "../../utils/modifyContext";
-import { faImage, faPaperPlane, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export const PostManagement = (props) => {
     const { value, setValue } = useContext(ModifyContext);
