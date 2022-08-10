@@ -45,8 +45,6 @@ export const ModifyPost = (props) => {
             : (errorHandler.innerText = " ⛔ Champs vides ou incorrectes ");
     };
 
-    console.log(value);
-
     return (
         <div className={style.backgroundColor}>
             <span className={style.errorHandler} id="errorHandler"></span>

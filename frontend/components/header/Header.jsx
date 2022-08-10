@@ -10,7 +10,7 @@ import { faEnvelope, faArrowRightFromBracket } from "@fortawesome/free-solid-svg
 
 export const Header = (props) => {
     const router = useRouter();
-    console.log(router.route);
+
     const [click, setClick] = useState(false);
 
     return (

@@ -3,6 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
+import { sortByDate } from "../utils/utils";
 
 // Components and icons
 import { Footer } from "../components/footer";
@@ -61,6 +62,8 @@ export const SocialMedia = () => {
         fetch("http://localhost:4200/api/posts", { credentials: "include" })
             .then((res) => res.json())
             .then((data) => {
+                data.sort(sortByDate);
+
                 setData(data);
                 setTimeout(() => {
                     setLoading(false);
