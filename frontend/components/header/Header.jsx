@@ -13,13 +13,28 @@ export const Header = (props) => {
 
     const [click, setClick] = useState(false);
 
+    const onKeyUp = (e) => {
+        if (e.key === "Enter") setClick(!click);
+    };
     return (
-        <div className={style.container}>
+        <header className={style.container} role="banner">
             <div>
                 <div className={style.container__logo}>
-                    <img src={colorLogo.src} alt="logo_groupomania" />
+                    <h1 className={style.mainTitle}>
+                        <img src={colorLogo.src} alt="logo_groupomania" />
+                    </h1>
+
                     {router.route === "/socialMedia" ? (
-                        <FontAwesomeIcon icon={props.icon.faBars} className={style.container__logo__icon} onClick={() => setClick(!click)} />
+                        <FontAwesomeIcon
+                            icon={props.icon.faBars}
+                            role="button"
+                            aria-pressed="false"
+                            ria-expanded="false"
+                            onKeyUp={onKeyUp}
+                            tabindex={0}
+                            className={style.container__logo__icon}
+                            onClick={() => setClick(!click)}
+                        />
                     ) : (
                         ""
                     )}
@@ -27,12 +42,12 @@ export const Header = (props) => {
                 <hr />
                 {click ? (
                     <span className={style.container__navMenu}>
-                        <NavButton icon={{ faEnvelope, faArrowRightFromBracket }} />
+                        <NavButton icon={{ faEnvelope, faArrowRightFromBracket }} role="navigation" />
                     </span>
                 ) : (
                     ""
                 )}
             </div>
-        </div>
+        </header>
     );
 };

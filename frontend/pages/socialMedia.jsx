@@ -78,34 +78,36 @@ export const SocialMedia = () => {
 
     return (
         <div className={style.socialMedia__container}>
-            <ModifyContext.Provider value={{ value, setValue }}>
-                {value.state ? <ModifyPost icon={{ faImage, faPaperPlane, faXmark }} updatePosts={updatePostsList} /> : ""}
-                <Header icon={{ faBars, faXmark }} />
-                <PostCreation icon={{ faImage, faPaperPlane }} updatePosts={updatePostsList} userInfos={userInfo} />
-                {data.length === 0 && !isLoading ? <p style={{ textAlign: "center" }}>Aucun post à afficher</p> : ""}
+            <Header icon={{ faBars, faXmark }} />{" "}
+            <main>
+                <ModifyContext.Provider value={{ value, setValue }}>
+                    {value.state ? <ModifyPost icon={{ faImage, faPaperPlane, faXmark }} updatePosts={updatePostsList} /> : ""}
 
-                {isLoading ? (
-                    <Loader />
-                ) : (
-                    data.map((post) => (
-                        <Post
-                            icon={{ faCircleUser, faEllipsis, faComments, faHeart }}
-                            description={post.description}
-                            image={post.imageUrl}
-                            key={post.id}
-                            id={post.id}
-                            updatePosts={updatePostsList}
-                            isLiked={post.isLiked}
-                            like={post.like}
-                            name={post.name}
-                            lastName={post.lastName}
-                            updateData={updateData}
-                            createdAt={post.createdAt}
-                        />
-                    ))
-                )}
-            </ModifyContext.Provider>
+                    <PostCreation icon={{ faImage, faPaperPlane }} updatePosts={updatePostsList} userInfos={userInfo} />
+                    {data.length === 0 && !isLoading ? <p style={{ textAlign: "center" }}>Aucun post à afficher</p> : ""}
 
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        data.map((post) => (
+                            <Post
+                                icon={{ faCircleUser, faEllipsis, faComments, faHeart }}
+                                description={post.description}
+                                image={post.imageUrl}
+                                key={post.id}
+                                id={post.id}
+                                updatePosts={updatePostsList}
+                                isLiked={post.isLiked}
+                                like={post.like}
+                                name={post.name}
+                                lastName={post.lastName}
+                                updateData={updateData}
+                                createdAt={post.createdAt}
+                            />
+                        ))
+                    )}
+                </ModifyContext.Provider>
+            </main>
             <Footer />
         </div>
     );

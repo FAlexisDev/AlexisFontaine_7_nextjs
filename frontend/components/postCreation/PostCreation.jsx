@@ -53,17 +53,47 @@ export const PostCreation = (props) => {
         <div className={style.content__container}>
             <p> Bonjour {props.userInfos.name} ! Que se passe-t-il ? 👋</p>
             <form method="POST" className={style.content__container__form} id="postCreationForm">
-                <textarea name="post" id={style.post__content} cols="30" rows="6" placeholder="Ecrivez votre publication ici !" maxLength={200}></textarea>
+                <textarea
+                    name="post"
+                    id={style.post__content}
+                    cols="30"
+                    rows="6"
+                    placeholder="Ecrivez votre publication ici !"
+                    maxLength={200}
+                    role="textbox"
+                    aria-label="Contenu du post"
+                ></textarea>
+
                 <span id={style.post__content__lenght}> max.200</span>
                 <div className={style.content__container__icons}>
-                    <label htmlFor="fileUploader">
+                    <label htmlFor="fileUploader" aria-label="Choisir une image" tabIndex="0">
+                        -
                         <FontAwesomeIcon icon={props.icon.faImage} className={style.content__container__icons__image} />
-                        <input type="file" className={style.content__container__icons__fileUploader} id="fileUploader" name="file" onChange={handleChange} />
+                        <input
+                            type="file"
+                            className={style.content__container__icons__fileUploader}
+                            id="fileUploader"
+                            name="file"
+                            onChange={handleChange}
+                            aria-label="Choisir une image"
+                            role="button"
+                            aria-pressed="false"
+                        />
                         <span className={style.imgName} id="imgName"></span>
                     </label>
                     <label htmlFor="submit" className={style.content__container__icons__label}>
+                        -
                         <FontAwesomeIcon icon={props.icon.faPaperPlane} className={style.content__container__icons__paperPlane} />
-                        <input type="submit" id="submit" className={style.content__container__icons__submitButton} onClick={handleSubmit} value="Publier" />
+                        <input
+                            type="submit"
+                            id="submit"
+                            className={style.content__container__icons__submitButton}
+                            onClick={handleSubmit}
+                            value="Publier"
+                            aria-label="Envoyer la publication"
+                            role="button"
+                            aria-pressed="false"
+                        />
                     </label>
                 </div>
             </form>

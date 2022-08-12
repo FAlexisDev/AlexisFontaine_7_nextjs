@@ -23,13 +23,13 @@ export const NavButton = (props) => {
 
     return (
         <div className={style.navMenu}>
-            <div className={style.navMenu__container} id="mailTo" onClick={handleClickContact}>
-                <FontAwesomeIcon icon={props.icon.faEnvelope} />
+            <div className={style.navMenu__container} id="mailTo" onClick={handleClickContact} role="link" tabIndex={0}>
+                <FontAwesomeIcon icon={props.icon.faEnvelope} role="img" />
                 <p>Nous contacter</p>
             </div>
 
-            <div className={style.navMenu__container} onClick={handleClickLogout}>
-                <FontAwesomeIcon icon={props.icon.faArrowRightFromBracket} />
+            <div className={style.navMenu__container} onClick={handleClickLogout} role="button" aria-pressed="false" tabIndex={0}>
+                <FontAwesomeIcon icon={props.icon.faArrowRightFromBracket} role="img" />
                 <p>Se déconnecter</p>
             </div>
             <hr className={style.navMenu__hr} />

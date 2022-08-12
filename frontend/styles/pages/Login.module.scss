@@ -5,7 +5,7 @@
     min-height: 100vh;
     height: 100%;
     font-family: $roboto-font;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 992px) and (min-height: 1000px) {
         display: flex;
         justify-content: center;
         align-items: center;

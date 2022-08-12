@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ModifyContext } from "../../utils/modifyContext";
 
 export const ModifyPost = (props) => {
+    console.log(props);
     const { value, setValue } = useContext(ModifyContext);
     const [textArea, setTextArea] = useState("");
     const [file, setFile] = useState("");
@@ -51,7 +52,14 @@ export const ModifyPost = (props) => {
             <div className={style.modifyPost}>
                 <div className={style.modifyPost__headers}>
                     <p>Modifier le post</p>
-                    <FontAwesomeIcon icon={props.icon.faXmark} className={style.modifyPost__headers__icon} onClick={() => setValue(false)} />
+                    <FontAwesomeIcon
+                        icon={props.icon.faXmark}
+                        className={style.modifyPost__headers__icon}
+                        onClick={() => setValue(false)}
+                        role="button"
+                        tabIndex={0}
+                        aria-describedby="Boutton permettant de fermer la fenêtre de modification"
+                    />
                 </div>
                 <hr />
                 <form method="POST" className={style.modifyPost__form} id="formPost">
@@ -62,19 +70,28 @@ export const ModifyPost = (props) => {
                         rows="4"
                         maxLength={200}
                         className={style.modifyPost__form__description}
-                        value={textArea}
+                        value={value.description}
                         onChange={(e) => setTextArea(e.target.value)}
+                        aria-label="Description du poste"
+                        role="textbox"
                     />
 
                     <div className={style.modifyPost__form__button}>
-                        <label htmlFor="file" className={style.modifyPost__form__button__file}>
-                            <FontAwesomeIcon icon={props.icon.faImage} className={style.modifyPost__form__button__file__icon} />
-                            <input type="file" id="file" className={style.modifyPost__form__button__file__input} onChange={handleChange} />
+                        <label htmlFor="file" className={style.modifyPost__form__button__file} tabIndex="0">
+                            <FontAwesomeIcon icon={props.icon.faImage} className={style.modifyPost__form__button__file__icon} role="img" />
+                            <input type="file" id="file" className={style.modifyPost__form__button__file__input} onChange={handleChange} role="button" />
                             <span className={style.imgName} id="imgName"></span>
                         </label>
-                        <label htmlFor="submit" className={style.modifyPost__form__button__submit}>
-                            <FontAwesomeIcon icon={props.icon.faPaperPlane} className={style.modifyPost__form__button__submit__icon} />
-                            <input type="submit" value="" id="submit" className={style.modifyPost__form__button__submit__input} onClick={handleSubmit} />
+                        <label htmlFor="submit" className={style.modifyPost__form__button__submit} tabIndex="0">
+                            <FontAwesomeIcon icon={props.icon.faPaperPlane} className={style.modifyPost__form__button__submit__icon} role="img" />
+                            <input
+                                type="submit"
+                                value=""
+                                id="submit"
+                                className={style.modifyPost__form__button__submit__input}
+                                onClick={handleSubmit}
+                                role="button"
+                            />
                         </label>
                     </div>
                 </form>

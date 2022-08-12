@@ -6,12 +6,27 @@ export const Footer = () => {
     const router = useRouter();
 
     return (
-        <div className={style.footer} id="footer" style={router.route === "/socialMedia" ? { marginBottom: "-130px" } : { marginBottom: "0" }}>
-            <h1>Groupomania</h1>
+        <footer className={style.footer} id="footer" style={router.route === "/socialMedia" ? { marginBottom: "-130px" } : { marginBottom: "0" }}>
+            <h2>Groupomania</h2>
             <ul className={style.footer__list}>
-                <li>Contactez-nous</li>
-                <li>Conditions générales d'utilisation</li>
+                <li>
+                    <a href="mailto:contact@groupomania.com" role="link">
+                        Contactez-nous
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="/socialMedia"
+                        role="link"
+                        onClick={() => {
+                            alert("Feature en cours de développement");
+                        }}
+                    >
+                        Conditions générales d'utilisation
+                    </a>
+                </li>
             </ul>
-        </div>
+        </footer>
     );
 };

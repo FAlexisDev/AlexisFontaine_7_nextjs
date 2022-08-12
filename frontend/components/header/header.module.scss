@@ -4,13 +4,14 @@
     width: 100%;
     position: relative;
     font-family: "Roboto", sans-serif;
+    background-color: white;
 
     @media screen and (min-width: 992px) and (min-height: 1000px) {
         position: fixed;
         width: 60%;
         top: 0;
         padding-top: 10px;
-        z-index: 2;
+        z-index: 3;
         border-bottom: 10px solid white;
     }
     &__logo {
@@ -67,4 +68,8 @@
     to {
         opacity: 0;
     }
+}
+.mainTitle {
+    margin: 0;
+    padding: 0;
 }

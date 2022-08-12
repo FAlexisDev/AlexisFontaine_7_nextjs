@@ -5,7 +5,8 @@
     min-height: 100vh;
     height: 100%;
     font-family: $roboto-font;
-    @media screen and (min-width: 992px) {
+
+    @media screen and (min-width: 992px) and (min-height: 1000px) {
         width: 60%;
         margin: auto;
         display: flex;
@@ -18,14 +19,21 @@
         align-items: center;
         justify-content: center;
         height: 70vh;
+        margin-top: 20px;
+        @media screen and (max-height: 700px) {
+            margin-top: 0;
+        }
 
         &__title {
             font-size: 30px;
             margin: 0;
             padding-bottom: 50px;
             color: $primary-color;
-            @media screen and (min-width: 992px) {
+            @media screen and (min-width: 992px) and (min-height: 1000px) {
                 font-size: 45px;
+            }
+            @media screen and (max-height: 700px) {
+                display: none;
             }
         }
         &__link {
@@ -39,7 +47,7 @@
             text-align: center;
             color: red;
             font-size: 12px;
-            @media screen and (min-width: 992px) {
+            @media screen and (min-width: 992px) and (min-height: 1000px) {
                 font-size: 16px;
             }
         }

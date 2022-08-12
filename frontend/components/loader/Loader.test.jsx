@@ -1,9 +1,12 @@
 import React from "react";
 import { Loader } from "./Loader";
-import { render } from "@testing-library/react";
+import { getByRole, render } from "@testing-library/react";
 
 describe("Loader Component", () => {
     test("Should render the component", () => {
-        render(<Loader />);
+        let renderingComponent = render(<Loader />);
+        let componentStyle = renderingComponent.getByRole("alert").className;
+
+        expect(componentStyle).toContain("container__loader");
     });
 });
