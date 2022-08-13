@@ -3,7 +3,8 @@ const postsServices = require("../service/Posts");
 exports.getPosts = async (req, res) => {
     try {
         const requesterUserId = req.authenticatedUserId;
-        const posts = await postsServices.getPosts(requesterUserId);
+        const userRole = req.userRole;
+        const posts = await postsServices.getPosts(requesterUserId, userRole);
         res.status(200).json(posts);
     } catch (error) {
         console.error(error);
@@ -16,6 +17,7 @@ exports.createPost = async (req, res) => {
         await postsServices.createPost(req);
         res.status(200).json({ message: "Post created ! " });
     } catch (error) {
+        console.error(error);
         res.status(409).json({ message: "Failed to create the post", error: error.message });
     }
 };
@@ -25,6 +27,7 @@ exports.getPost = async (req, res) => {
         const post = await postsServices.getPost(req);
         res.status(200).json(post);
     } catch (error) {
+        console.error(error);
         res.status(404).json({ message: "Post not found", error });
     }
 };
@@ -34,6 +37,7 @@ exports.modifyPost = async (req, res) => {
         await postsServices.modifyPost(req);
         res.status(200).json({ message: "Post modified " });
     } catch (error) {
+        console.error(error);
         res.status(409).json({ message: "Failed to modify the post", error });
     }
 };
@@ -43,6 +47,7 @@ exports.deletePost = async (req, res) => {
         await postsServices.deletePost(req);
         res.status(200).json({ message: "Post deleted !" });
     } catch (error) {
+        console.error(error);
         res.status(400).json({ message: "Failed to delete the post", error });
     }
 };

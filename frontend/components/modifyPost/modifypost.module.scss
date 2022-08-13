@@ -56,17 +56,21 @@
             & label {
                 display: flex;
                 align-items: center;
+                color: rgba(0, 0, 0, 0);
+                cursor: pointer;
             }
             &__submit {
                 display: flex;
                 align-items: center;
                 position: relative;
+
                 &__input {
                     width: 40px;
                     height: 22px;
                     padding: 5px;
                     border-radius: 20px;
                     border: none;
+                    color: white;
                     background-color: $tertiary-color;
                 }
                 &__icon {

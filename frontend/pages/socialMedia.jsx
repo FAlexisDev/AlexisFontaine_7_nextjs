@@ -103,6 +103,7 @@ export const SocialMedia = () => {
                                 lastName={post.lastName}
                                 updateData={updateData}
                                 createdAt={post.createdAt}
+                                isOwner={post.isOwner}
                             />
                         ))
                     )}

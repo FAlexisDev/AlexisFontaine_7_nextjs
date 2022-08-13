@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ModifyContext } from "../../utils/modifyContext";
 
 export const ModifyPost = (props) => {
-    console.log(props);
     const { value, setValue } = useContext(ModifyContext);
     const [textArea, setTextArea] = useState("");
     const [file, setFile] = useState("");
@@ -45,7 +44,7 @@ export const ModifyPost = (props) => {
                   })
             : (errorHandler.innerText = " ⛔ Champs vides ou incorrectes ");
     };
-
+    console.log(props.description);
     return (
         <div className={style.backgroundColor}>
             <span className={style.errorHandler} id="errorHandler"></span>
@@ -58,7 +57,6 @@ export const ModifyPost = (props) => {
                         onClick={() => setValue(false)}
                         role="button"
                         tabIndex={0}
-                        aria-describedby="Boutton permettant de fermer la fenêtre de modification"
                     />
                 </div>
                 <hr />
@@ -70,7 +68,7 @@ export const ModifyPost = (props) => {
                         rows="4"
                         maxLength={200}
                         className={style.modifyPost__form__description}
-                        value={value.description}
+                        defaultValue={value.description}
                         onChange={(e) => setTextArea(e.target.value)}
                         aria-label="Description du poste"
                         role="textbox"
@@ -80,18 +78,19 @@ export const ModifyPost = (props) => {
                         <label htmlFor="file" className={style.modifyPost__form__button__file} tabIndex="0">
                             <FontAwesomeIcon icon={props.icon.faImage} className={style.modifyPost__form__button__file__icon} role="img" />
                             <input type="file" id="file" className={style.modifyPost__form__button__file__input} onChange={handleChange} role="button" />
-                            <span className={style.imgName} id="imgName"></span>
+                            <span className={style.imgName} id="imgName"></span>-
                         </label>
                         <label htmlFor="submit" className={style.modifyPost__form__button__submit} tabIndex="0">
                             <FontAwesomeIcon icon={props.icon.faPaperPlane} className={style.modifyPost__form__button__submit__icon} role="img" />
                             <input
                                 type="submit"
-                                value=""
+                                value="-"
                                 id="submit"
                                 className={style.modifyPost__form__button__submit__input}
                                 onClick={handleSubmit}
                                 role="button"
                             />
+                            -
                         </label>
                     </div>
                 </form>

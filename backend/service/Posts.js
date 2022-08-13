@@ -1,7 +1,7 @@
 const Posts = require("../models/Posts");
 const { getUsersInfos } = require("./Users");
 
-exports.getPosts = async (requesterUserId) => {
+exports.getPosts = async (requesterUserId, userRole) => {
     const posts = await Posts.find();
 
     const newPosts = posts.map(async (post) => {
@@ -16,6 +16,7 @@ exports.getPosts = async (requesterUserId) => {
             name: userInfos.name,
             lastName: userInfos.lastName,
             createdAt: post.createdAt,
+            isOwner: requesterUserId === post.userId || userRole === 2 ? true : false,
         };
     });
     return await Promise.all(newPosts);

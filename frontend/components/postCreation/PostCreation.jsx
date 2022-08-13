@@ -82,7 +82,6 @@ export const PostCreation = (props) => {
                         <span className={style.imgName} id="imgName"></span>
                     </label>
                     <label htmlFor="submit" className={style.content__container__icons__label}>
-                        -
                         <FontAwesomeIcon icon={props.icon.faPaperPlane} className={style.content__container__icons__paperPlane} />
                         <input
                             type="submit"
@@ -94,6 +93,7 @@ export const PostCreation = (props) => {
                             role="button"
                             aria-pressed="false"
                         />
+                        -
                     </label>
                 </div>
             </form>

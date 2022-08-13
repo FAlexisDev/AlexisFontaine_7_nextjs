@@ -38,16 +38,21 @@ export const Post = (props) => {
                     <p className={style.post__container__header__profile__name}>{props.name + " " + props.lastName}</p>
                     <p className={style.date}>{dateFormat(new Date(props.createdAt), "ddd mmmm yy - HH:MM")}</p>
                 </div>
-                <FontAwesomeIcon
-                    icon={props.icon.faEllipsis}
-                    className={style.post__container__header__dotsIcon}
-                    id="navPost"
-                    onClick={() => setClick(!click)}
-                    role="button"
-                    aria-pressed="false"
-                    tabIndex={0}
-                    onKeyUp={onKeyUp}
-                />
+                {props.isOwner ? (
+                    <FontAwesomeIcon
+                        icon={props.icon.faEllipsis}
+                        className={style.post__container__header__dotsIcon}
+                        id="navPost"
+                        onClick={() => setClick(!click)}
+                        role="button"
+                        aria-pressed="false"
+                        tabIndex={0}
+                        onKeyUp={onKeyUp}
+                    />
+                ) : (
+                    ""
+                )}
+
                 {click ? (
                     <span id="postManagement" className={style.post__container__header__postManagement}>
                         <PostManagement icon={{ faTrash, faPenToSquare }} postId={props.id} updatePosts={props.updatePosts} description={props.description} />
