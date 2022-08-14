@@ -6,7 +6,7 @@
     height: 100%;
     font-family: $roboto-font;
 
-    @media screen and (min-width: 992px) and (min-height: 1000px) {
+    @media screen and (min-width: 992px) and (min-height: 900px) {
         width: 60%;
         margin: auto;
         display: flex;
@@ -29,7 +29,7 @@
             margin: 0;
             padding-bottom: 50px;
             color: $primary-color;
-            @media screen and (min-width: 992px) and (min-height: 1000px) {
+            @media screen and (min-width: 992px) and (min-height: 900px) {
                 font-size: 45px;
             }
             @media screen and (max-height: 700px) {
@@ -47,7 +47,7 @@
             text-align: center;
             color: red;
             font-size: 12px;
-            @media screen and (min-width: 992px) and (min-height: 1000px) {
+            @media screen and (min-width: 992px) and (min-height: 900px) {
                 font-size: 16px;
             }
         }
@@ -59,7 +59,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @media screen and (min-width: 992px) and (min-height: 1000px) {
+    @media screen and (min-width: 992px) and (min-height: 900px) {
         background-color: #ffd7d771;
         width: 35rem;
         height: 45rem;
