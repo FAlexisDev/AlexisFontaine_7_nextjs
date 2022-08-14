@@ -7,6 +7,7 @@ exports.getPosts = async (requesterUserId, userRole) => {
 
     const newPosts = posts.map(async (post) => {
         const userInfos = await getUsersInfos(post.userId);
+        console.log(userInfos);
         return {
             id: post._id,
             userId: post.userId,
@@ -18,6 +19,7 @@ exports.getPosts = async (requesterUserId, userRole) => {
             lastName: userInfos.lastName,
             createdAt: post.createdAt,
             isOwner: requesterUserId === post.userId || userRole === 2 ? true : false,
+            isAdmin: userInfos.roleId === 2 ? true : false,
         };
     });
     return await Promise.all(newPosts);

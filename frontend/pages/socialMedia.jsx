@@ -12,7 +12,7 @@ import { PostCreation } from "../components/postCreation";
 import { Post } from "../components/post";
 import { ModifyContext } from "../utils/modifyContext";
 import { Loader } from "../components/loader";
-import { faBars, faImage, faPaperPlane, faCircleUser, faEllipsis, faComments, faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faImage, faPaperPlane, faCircleUser, faEllipsis, faComments, faHeart, faXmark, faCheckDouble } from "@fortawesome/free-solid-svg-icons";
 import { ModifyPost } from "../components/modifyPost";
 
 // Styles
@@ -26,16 +26,6 @@ export const SocialMedia = () => {
     const [updateRequired, setUpdateRequired] = useState(false);
     const [value, setValue] = useState(false);
 
-    const updateData = (postId, updatedData) => {
-        setData((data) => {
-            return data.map((element) => {
-                if (element.id === postId) {
-                    return { ...element, ...updatedData };
-                }
-                return element;
-            });
-        });
-    };
     useEffect(() => {
         const cookie = getCookie("access_token");
         if (cookie === undefined) {
@@ -44,17 +34,16 @@ export const SocialMedia = () => {
     });
 
     useEffect(() => {
+        fetch("http://localhost:4200/api/auth/getUsersInfos", { credentials: "include" })
+            .then((res) => res.json())
+            .then((userData) => setUserInfos(userData))
+            .catch((error) => console.log(error));
+
         if (value) {
             window.scrollTo({ top: 0 });
         }
     }, []);
 
-    useEffect(() => {
-        fetch("http://localhost:4200/api/auth/getUsersInfos", { credentials: "include" })
-            .then((res) => res.json())
-            .then((userData) => setUserInfos(userData))
-            .catch((error) => console.log(error));
-    }, []);
     useEffect(() => {
         setUpdateRequired(false);
         setLoading(true);
@@ -76,6 +65,17 @@ export const SocialMedia = () => {
         setUpdateRequired(true);
     };
 
+    const updateData = (postId, updatedData) => {
+        setData((data) => {
+            return data.map((element) => {
+                if (element.id === postId) {
+                    return { ...element, ...updatedData };
+                }
+                return element;
+            });
+        });
+    };
+
     return (
         <div className={style.socialMedia__container}>
             <Header icon={{ faBars, faXmark }} />{" "}
@@ -91,7 +91,7 @@ export const SocialMedia = () => {
                     ) : (
                         data.map((post) => (
                             <Post
-                                icon={{ faCircleUser, faEllipsis, faComments, faHeart }}
+                                icon={{ faCircleUser, faEllipsis, faComments, faHeart, faCheckDouble }}
                                 description={post.description}
                                 image={post.imageUrl}
                                 key={post.id}
@@ -104,6 +104,7 @@ export const SocialMedia = () => {
                                 updateData={updateData}
                                 createdAt={post.createdAt}
                                 isOwner={post.isOwner}
+                                isAdmin={post.isAdmin}
                             />
                         ))
                     )}

@@ -25,7 +25,7 @@ exports.getUsersInfos = async (req, res) => {
         const userId = req.authenticatedUserId;
         const response = await usersService.getUsersInfos(userId);
 
-        res.status(200).json({ name: response.name, lastName: response.lastName });
+        res.status(200).json({ name: response.name, lastName: response.lastName, role: response.roleId });
     } catch (error) {
         console.log(error);
         res.status(400).json({ error: error.message });

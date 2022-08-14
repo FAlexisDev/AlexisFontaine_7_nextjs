@@ -8,6 +8,7 @@ import dateFormat from "dateFormat";
 import { useState } from "react";
 
 export const Post = (props) => {
+    console.log(props.isAdmin);
     const [click, setClick] = useState(false);
 
     const handleClick = () => {
@@ -36,7 +37,15 @@ export const Post = (props) => {
             <div className={style.post__container__header} id="post__container__header">
                 <div className={style.post__container__header__profile}>
                     <FontAwesomeIcon icon={props.icon.faCircleUser} className={style.post__container__header__profile__userIcon} role="img" />
-                    <p className={style.post__container__header__profile__name}>{props.name + " " + props.lastName}</p>
+                    <div className={style.userInfos}>
+                        <p className={style.post__container__header__profile__name}>{props.name + " " + props.lastName}</p>
+                        {props.isAdmin ? (
+                            <FontAwesomeIcon icon={props.icon.faCheckDouble} title="Admin" className={style.post__container__header__profile__adminIcon} />
+                        ) : (
+                            ""
+                        )}
+                    </div>
+
                     <p className={style.date}>{dateFormat(new Date(props.createdAt), "ddd mmmm yy - HH:MM")}</p>
                 </div>
                 {props.isOwner ? (

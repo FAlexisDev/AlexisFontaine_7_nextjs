@@ -37,22 +37,16 @@
             @media screen and (min-width: 992px) {
                 padding: 10px;
             }
-
+            &__adminIcon {
+                color: $primary-color;
+                padding-left: 7px;
+                font-size: 15px;
+            }
             &__userIcon {
                 color: $tertiary-color;
                 font-size: 40px;
                 @media screen and (min-width: 992px) {
                     font-size: 46px;
-                }
-            }
-            &__name {
-                position: absolute;
-                left: 55px;
-                top: -6px;
-                @media screen and (min-width: 992px) {
-                    left: 68px;
-                    font-size: 18px;
-                    top: 6px;
                 }
             }
         }
@@ -134,6 +128,19 @@
         @media screen and (min-width: 992px) {
             border-bottom-left-radius: 20px;
         }
+    }
+}
+
+.userInfos {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 55px;
+    top: -6px;
+    @media screen and (min-width: 992px) {
+        left: 68px;
+        font-size: 18px;
+        top: 6px;
     }
 }
 @keyframes manageApparition {
