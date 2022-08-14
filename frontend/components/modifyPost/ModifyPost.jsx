@@ -65,7 +65,7 @@ export const ModifyPost = (props) => {
                   })
                   .catch((error) => {
                       errorHandler.innerText = " ⛔Post non modifié !";
-                      console.log(error);
+                      console.error(error);
                   })
             : (errorHandler.innerText = " ⛔ Champs vides ou incorrectes ");
     };

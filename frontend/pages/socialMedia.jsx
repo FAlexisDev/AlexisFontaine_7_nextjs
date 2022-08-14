@@ -37,7 +37,7 @@ export const SocialMedia = () => {
         fetch("http://localhost:4200/api/auth/getUsersInfos", { credentials: "include" })
             .then((res) => res.json())
             .then((userData) => setUserInfos(userData))
-            .catch((error) => console.log(error));
+            .catch((error) => console.error(error));
 
         if (value) {
             window.scrollTo({ top: 0 });
@@ -58,7 +58,7 @@ export const SocialMedia = () => {
                     setLoading(false);
                 }, 200);
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.error(error));
     }, [updateRequired]);
 
     const updatePostsList = () => {

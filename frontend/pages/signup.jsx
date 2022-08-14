@@ -54,7 +54,7 @@ const Signup = () => {
                         : (errorHandler.innerText = "✅ Votre compte a bien été crée merci de bien vouloir vous connectez.");
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.error(error);
                 });
         } else {
             errorHandler.innerText =

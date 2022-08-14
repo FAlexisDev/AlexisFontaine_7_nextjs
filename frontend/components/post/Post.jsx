@@ -8,7 +8,6 @@ import dateFormat from "dateFormat";
 import { useState } from "react";
 
 export const Post = (props) => {
-    console.log(props.isAdmin);
     const [click, setClick] = useState(false);
 
     const handleClick = () => {
@@ -29,7 +28,7 @@ export const Post = (props) => {
             .then((likeData) => {
                 props.updateData(props.id, { like: likeData.data.likeCount, isLiked: !props.isLiked });
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.error(error));
     };
 
     return (

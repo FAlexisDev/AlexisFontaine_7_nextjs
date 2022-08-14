@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
             next();
         }
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(401).json({ message: "You are not allowed to continue" });
     }
 };

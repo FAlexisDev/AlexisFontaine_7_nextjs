@@ -14,13 +14,13 @@ app.use(cookieParser());
 // Connexion to MongoDB Atlas
 mongoose
     .connect(process.env.MONGOOSE, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB : Connexion sucess"))
+    .then(() => console.info("MongoDB : Connexion sucess"))
     .then(() => utils.addRoles())
-    .catch(() => console.log("MongoDB : Connexion failed"));
+    .catch(() => console.info("MongoDB : Connexion failed"));
 
 app.listen(PORT, (error) => {
     if (error) console.error(error);
-    console.log(`Server started on port ${PORT}->  localhost:${PORT}`);
+    console.info(`Server started on port ${PORT}->  localhost:${PORT}`);
 });
 
 app.use((req, res, next) => {

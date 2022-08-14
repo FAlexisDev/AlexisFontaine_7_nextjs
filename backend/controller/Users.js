@@ -15,7 +15,7 @@ exports.login = async (req, res) => {
         const response = await usersService.login(req, res);
         res.status(200).json(response);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(400).json({ error: error.message });
     }
 };
@@ -27,7 +27,7 @@ exports.getUsersInfos = async (req, res) => {
 
         res.status(200).json({ name: response.name, lastName: response.lastName, role: response.roleId });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(400).json({ error: error.message });
     }
 };

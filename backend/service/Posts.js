@@ -7,7 +7,6 @@ exports.getPosts = async (requesterUserId, userRole) => {
 
     const newPosts = posts.map(async (post) => {
         const userInfos = await getUsersInfos(post.userId);
-        console.log(userInfos);
         return {
             id: post._id,
             userId: post.userId,
@@ -64,7 +63,7 @@ exports.deletePost = async (req) => {
                 await Posts.deleteOne({ _id: req.params.id });
             });
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.error(error));
 };
 
 exports.likePost = async (req) => {

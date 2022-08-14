@@ -24,7 +24,7 @@ export const PostManagement = (props) => {
             .then(() => {
                 props.updatePosts();
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.error(error));
     };
 
     return (

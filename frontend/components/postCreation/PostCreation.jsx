@@ -37,7 +37,7 @@ export const PostCreation = (props) => {
                 fileUploader.value = "";
                 imgName.innerText = "";
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.error(error));
     };
 
     const handleChange = (e) => {
