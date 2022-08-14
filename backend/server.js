@@ -20,7 +20,7 @@ mongoose
 
 app.listen(PORT, (error) => {
     if (error) console.error(error);
-    console.log(`Server started on port ${PORT}->  ${process.env.URL}`);
+    console.log(`Server started on port ${PORT}->  localhost:${PORT}`);
 });
 
 app.use((req, res, next) => {

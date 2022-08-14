@@ -1,5 +1,6 @@
 const Posts = require("../models/Posts");
 const { getUsersInfos } = require("./Users");
+const fs = require("fs");
 
 exports.getPosts = async (requesterUserId, userRole) => {
     const posts = await Posts.find();
@@ -24,10 +25,11 @@ exports.getPosts = async (requesterUserId, userRole) => {
 
 exports.createPost = async (req) => {
     const imageUrl = req.file === undefined ? "" : `${req.protocol}://${req.get("host")}/${req.file.path}`;
-    const { description, userId } = req.body;
+    let postDescription = req.body.description === "" ? " " : req.body.description;
+    const { userId } = req.body;
 
     const post = new Posts({
-        description: description,
+        description: postDescription,
         userId: userId,
         usersLiked: [],
         imageUrl: imageUrl,
@@ -48,11 +50,28 @@ exports.modifyPost = async (req) => {
               imageUrl: `${req.protocol}://${req.get("host")}/${req.file.path}`,
           }
         : { ...req.body };
-    await Posts.updateOne({ _id: req.params.id }, { ...postObject });
+
+    if (req.file) {
+        Posts.findOne({ _id: req.params.id })
+            .then((res) => {
+                let filename = res.imageUrl.split("/images\\")[1];
+                fs.unlink(`images/${filename}`, async () => {
+                    await Posts.updateOne({ _id: req.params.id }, { ...postObject });
+                });
+            })
+            .catch((error) => console.log(error));
+    }
 };
 
 exports.deletePost = async (req) => {
-    await Posts.deleteOne({ _id: req.params.id });
+    Posts.findOne({ _id: req.params.id })
+        .then((res) => {
+            let filename = res.imageUrl.split("/images\\")[1];
+            fs.unlink(`images/${filename}`, async () => {
+                await Posts.deleteOne({ _id: req.params.id });
+            });
+        })
+        .catch((error) => console.log(error));
 };
 
 exports.likePost = async (req) => {
@@ -67,12 +86,10 @@ exports.likePost = async (req) => {
     if (!likeStatus) {
         usersLiked.push(req.authenticatedUserId);
     } else {
-        console.log("test");
         usersLiked = usersLiked.filter((user) => {
             return user != req.authenticatedUserId;
         });
     }
-    console.log(usersLiked);
 
     await post.updateOne({
         _id: req.params.id,

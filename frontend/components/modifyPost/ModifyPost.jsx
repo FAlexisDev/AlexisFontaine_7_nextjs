@@ -36,7 +36,6 @@ export const ModifyPost = (props) => {
                       props.updatePosts();
                       setValue({ modifiedPostId: "", state: !value });
                       errorHandler.innerText = "✅ Post modifié ! ";
-                      console.log(res);
                   })
                   .catch((error) => {
                       errorHandler.innerText = " ⛔Post non modifié !";
@@ -44,7 +43,7 @@ export const ModifyPost = (props) => {
                   })
             : (errorHandler.innerText = " ⛔ Champs vides ou incorrectes ");
     };
-    console.log(props.description);
+
     return (
         <div className={style.backgroundColor}>
             <span className={style.errorHandler} id="errorHandler"></span>

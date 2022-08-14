@@ -73,7 +73,7 @@ export const Post = (props) => {
                 <div onClick={handleLike} className={style.likeDiv} role="button" tabIndex={0} id="like" onKeyUp={onKeyUp}>
                     <FontAwesomeIcon icon={props.icon.faHeart} className={props.isLiked ? style.post__container__icons__likes : ""} id="likeIcon" />
                     <p>{props.like}</p>
-                    <p>J&aposaime</p>
+                    <p>J'aime</p>
                 </div>
             </div>
         </div>

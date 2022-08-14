@@ -19,7 +19,6 @@ const Signup = () => {
             lastName: /^\D+$/,
             password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
         };
-        console.log(regex.email.test(data.email), regex.name.test(data.name), regex.lastName.test(data.lastName), regex.password.test(data.password));
 
         if (regex.email.test(data.email) && regex.name.test(data.name) && regex.lastName.test(data.lastName) && regex.password.test(data.password)) {
             return true;

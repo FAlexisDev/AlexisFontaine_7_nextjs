@@ -4,7 +4,6 @@ import style from "./postManagement.module.scss";
 import { ModifyContext } from "../../utils/modifyContext";
 
 export const PostManagement = (props) => {
-    console.log(props);
     const { value, setValue } = useContext(ModifyContext);
 
     const onKeyUp = (e) => {

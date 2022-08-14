@@ -23,7 +23,7 @@ export const Footer = () => {
                             alert("Feature en cours de développement");
                         }}
                     >
-                        Conditions générales d&aposutilisation
+                        Conditions générales d'utilisation
                     </a>
                 </li>
             </ul>
