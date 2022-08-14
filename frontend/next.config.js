@@ -7,18 +7,6 @@ const nextConfig = {
 module.exports = nextConfig;
 
 module.exports = {
-    async redirects() {
-        return [
-            {
-                source: "/",
-                destination: "/login",
-                permanent: true,
-            },
-        ];
-    },
-};
-
-module.exports = {
     i18n: {
         locales: ["fr"],
         defaultLocale: "fr",
