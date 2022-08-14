@@ -1,10 +1,15 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import { useEffect } from "react";
-import { Router } from "next/router";
+import Router from "next/router";
 
 function MyApp({ Component, pageProps }) {
-    Router.path === "/" ? Router.push("/login") : "";
+    useEffect(() => {
+        const { pathname } = Router;
+        if (pathname === "/") {
+            Router.push("/login");
+        }
+    });
 
     return (
         <>
