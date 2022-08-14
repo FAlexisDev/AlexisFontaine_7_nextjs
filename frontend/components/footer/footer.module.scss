@@ -37,7 +37,7 @@
         list-style-type: none;
         margin-left: 10px;
         padding: 0;
-        @media screen and (min-width: 992px) and (min-height: 900px) {
+        @media screen and (min-width: 992px) and (min-height: 1000px) {
             display: flex;
             align-items: flex-end;
             font-size: 18px;
@@ -48,7 +48,7 @@
             padding-bottom: 5px;
             border: none;
 
-            @media screen and (min-width: 992px) and (min-height: 900px) {
+            @media screen and (min-width: 992px) and (min-height: 1000px) {
                 padding: 0px 60px;
                 text-align: center;
             }
