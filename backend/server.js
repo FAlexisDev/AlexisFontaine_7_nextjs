@@ -5,10 +5,17 @@ const postsRouter = require("./routes/Posts");
 const utils = require("./utils/feed");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const fs = require("fs");
 const PORT = 4200;
 const app = express();
 
 require("dotenv").config();
+
+let dir = "./images";
+
+if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+}
 
 app.use(cookieParser());
 // Connexion to MongoDB Atlas
