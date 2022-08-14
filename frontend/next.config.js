@@ -24,3 +24,9 @@ module.exports = {
         defaultLocale: "fr",
     },
 };
+
+module.exports = {
+    images: {
+        domains: ["localhost"],
+    },
+};

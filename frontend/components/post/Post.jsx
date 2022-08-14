@@ -2,6 +2,7 @@ import React from "react";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PostManagement } from "../postManagement";
+import Image from "next/image";
 import style from "./post.module.scss";
 import dateFormat from "dateFormat";
 import { useState } from "react";
@@ -72,7 +73,7 @@ export const Post = (props) => {
                 <div onClick={handleLike} className={style.likeDiv} role="button" tabIndex={0} id="like" onKeyUp={onKeyUp}>
                     <FontAwesomeIcon icon={props.icon.faHeart} className={props.isLiked ? style.post__container__icons__likes : ""} id="likeIcon" />
                     <p>{props.like}</p>
-                    <p>J'aime</p>
+                    <p>J&aposaime</p>
                 </div>
             </div>
         </div>

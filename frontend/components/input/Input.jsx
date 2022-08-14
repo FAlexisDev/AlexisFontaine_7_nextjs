@@ -25,7 +25,7 @@ export const InputGroup = (props) => {
                         className={style.input__container__contact}
                         name={props.name}
                         role="textbox"
-                        contenteditable="true"
+                        contentEditable="true"
                         aria-labelledby={props.id}
                     />
                     <FontAwesomeIcon

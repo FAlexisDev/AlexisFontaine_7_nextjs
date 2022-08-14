@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./footer.module.scss";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const Footer = () => {
     const router = useRouter();
@@ -17,13 +18,12 @@ export const Footer = () => {
 
                 <li>
                     <a
-                        href="/socialMedia"
                         role="link"
                         onClick={() => {
                             alert("Feature en cours de développement");
                         }}
                     >
-                        Conditions générales d'utilisation
+                        Conditions générales d&aposutilisation
                     </a>
                 </li>
             </ul>
