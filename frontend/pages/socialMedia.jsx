@@ -47,7 +47,7 @@ export const SocialMedia = () => {
         if (value) {
             window.scrollTo({ top: 0 });
         }
-    });
+    }, []);
 
     useEffect(() => {
         fetch("http://localhost:4200/api/auth/getUsersInfos", { credentials: "include" })

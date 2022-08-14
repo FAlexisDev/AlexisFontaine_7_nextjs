@@ -46,21 +46,12 @@ exports.getPost = async (req) => {
 exports.modifyPost = async (req) => {
     const postObject = req.file
         ? {
-              ...req.body,
+              description: req.body.description,
               imageUrl: `${req.protocol}://${req.get("host")}/${req.file.path}`,
           }
-        : { ...req.body };
+        : { description: req.body.description };
 
-    if (req.file) {
-        Posts.findOne({ _id: req.params.id })
-            .then((res) => {
-                let filename = res.imageUrl.split("/images\\")[1];
-                fs.unlink(`images/${filename}`, async () => {
-                    await Posts.updateOne({ _id: req.params.id }, { ...postObject });
-                });
-            })
-            .catch((error) => console.log(error));
-    }
+    await Posts.updateOne({ _id: req.params.id }, { ...postObject });
 };
 
 exports.deletePost = async (req) => {

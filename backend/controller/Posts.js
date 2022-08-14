@@ -7,7 +7,7 @@ exports.getPosts = async (req, res) => {
         const posts = await postsServices.getPosts(requesterUserId, userRole);
         res.status(200).json(posts);
     } catch (error) {
-        console.error(error);
+        console.error("sheesh");
         res.status(404).json({ error });
     }
 };

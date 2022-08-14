@@ -30,7 +30,7 @@ export const Header = (props) => {
                             aria-pressed="false"
                             ria-expanded="false"
                             onKeyUp={onKeyUp}
-                            tabindex={0}
+                            tabIndex={0}
                             className={style.container__logo__icon}
                             onClick={() => setClick(!click)}
                         />
